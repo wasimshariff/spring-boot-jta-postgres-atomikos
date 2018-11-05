@@ -53,6 +53,16 @@
 			<artifactId>transactions-hibernate4</artifactId>
 			<version>4.0.6</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-instrument</artifactId>
+		</dependency>
+
+	<!--	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>-->
+
 	</dependencies>
 
 	<build>
@@ -60,7 +70,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<agent>${user.home}/.m2/repository/org/springframework/spring-instrument/5.0.7.RELEASE/spring-instrument-5.0.7.RELEASE.jar </agent>
+					<agent>${user.home}/.m2/repository/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar</agent>
+				</configuration>
 			</plugin>
+
+
 		</plugins>
 	</build>
 

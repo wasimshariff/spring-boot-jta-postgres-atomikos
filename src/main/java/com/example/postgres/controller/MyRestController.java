@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.UUID;
@@ -36,14 +37,14 @@ public class MyRestController {
     private TestingProperties testingProperties;
 
     @RequestMapping(path = "/pets", method = RequestMethod.POST)
-    public ResponseEntity addPets(@RequestBody Pets pets) {
+    public ResponseEntity addPets(@Valid @RequestBody Pets pets) {
         pets.setId(UUID.randomUUID().toString());
         petsService.addPets(pets);
         return ResponseEntity.ok(pets);
     }
 
     @RequestMapping(path = "/vets", method = RequestMethod.POST)
-    public ResponseEntity addVets(@RequestBody Vets vets) {
+    public ResponseEntity addVets(@Valid @RequestBody Vets vets) {
         vets.setId(UUID.randomUUID().toString());
         vetsService.addPets(vets);
         return ResponseEntity.ok(vets);
@@ -57,7 +58,7 @@ public class MyRestController {
     }
 
     @RequestMapping(path = "/doctors", method = RequestMethod.POST)
-    public ResponseEntity addDocs(@RequestBody Doctors docs) {
+    public ResponseEntity addDocs(@Valid @RequestBody Doctors docs) {
         docs.setId(UUID.randomUUID().toString());
         docService.addDocs(docs);
         return ResponseEntity.ok(docs);

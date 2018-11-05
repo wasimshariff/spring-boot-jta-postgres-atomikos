@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "DOCTORS")
@@ -13,6 +14,7 @@ public class Doctors {
     @Id
     private String id;
 
+    @NotNull(message = "Doctors msg cannot be null")
     private String msg;
 
     public String getId() {
