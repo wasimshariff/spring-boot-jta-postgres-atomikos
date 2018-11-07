@@ -11,12 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TrackerService {
-
+/*
     @Autowired
     private TrackerRepository trackerRepository;
 
-    @Transactional(value = "dbTransactionManager", isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
+   // @Transactional(value = "dbTransactionManager", isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
     public void logServiceTracker(ServiceTracker tracker) {
         this.trackerRepository.save(tracker);
-    }
+    }*/
 }

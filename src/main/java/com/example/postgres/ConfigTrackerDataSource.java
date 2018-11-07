@@ -16,14 +16,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.HashMap;
 
-@Configuration
-@EnableJpaRepositories(basePackages = {"com.example.postgres.repository.tracker"},
+//@Configuration
+/*@EnableJpaRepositories(basePackages = {"com.example.postgres.repository.tracker"},
         entityManagerFactoryRef = "dbEntityManager",
-        transactionManagerRef = "dbTransactionManager")
-@EnableTransactionManagement
+        transactionManagerRef = "dbTransactionManager")*/
 public class ConfigTrackerDataSource {
 
-    @Autowired
+  /*  @Autowired
     private Environment env;
 
     @Bean
@@ -64,5 +63,5 @@ public class ConfigTrackerDataSource {
         transactionManager.setEntityManagerFactory(
                 dbEntityManager().getObject());
         return transactionManager;
-    }
+    }*/
 }

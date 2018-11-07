@@ -57,6 +57,20 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-instrument</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>aspectDemo</artifactId>
+			<version>1.0.4-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+<!--		<dependency>
+			<groupId>com.pmic</groupId>
+			<artifactId>service-tracker-aspect</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>-->
+
+
 
 	<!--	<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -1,5 +1,6 @@
 package com.example.postgres.controller;
 
+import com.example.postgres.MyAspectProperties;
 import com.example.postgres.model.Doctors;
 import com.example.postgres.model.Pets;
 import com.example.postgres.model.TestingProperties;
@@ -7,6 +8,7 @@ import com.example.postgres.model.Vets;
 import com.example.postgres.service.DocService;
 import com.example.postgres.service.PetsService;
 import com.example.postgres.service.VetsService;
+import mytest.sharedaspect.annotation.ServiceTrackerAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,11 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
+@ServiceTrackerAnnotation
 public class MyRestController {
 
     @Autowired
@@ -35,6 +37,9 @@ public class MyRestController {
 
     @Autowired
     private TestingProperties testingProperties;
+
+    @Autowired
+    private MyAspectProperties myAspectProperties;
 
     @RequestMapping(path = "/pets", method = RequestMethod.POST)
     public ResponseEntity addPets(@Valid @RequestBody Pets pets) {
@@ -66,11 +71,13 @@ public class MyRestController {
 
     @RequestMapping(path = "/pets", method = RequestMethod.GET)
     public ResponseEntity listPets() {
+        System.out.println(myAspectProperties.getJdbcUrl());
         List<Pets> voList = petsService.listPets();
         return ResponseEntity.ok(voList);
     }
 
     @RequestMapping(path = "/vets", method = RequestMethod.GET)
+    @ServiceTrackerAnnotation
     public ResponseEntity listVets() {
         List<Vets> voList = vetsService.listVets();
         return ResponseEntity.ok(voList);
