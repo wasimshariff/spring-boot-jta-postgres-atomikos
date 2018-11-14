@@ -4,6 +4,7 @@ import com.example.postgres.model.ServiceTracker;
 import com.example.postgres.service.TrackerService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -41,7 +42,16 @@ public class LoggingAspect {
     @Around(value = "@within(mytest.sharedaspect.annotation.ServiceTrackerAnnotation)")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("=============LoggingAspect Around Advice=================");
-        return joinPoint.proceed();
+        Object returnVal = joinPoint.proceed();
+        System.out.println("=============LoggingAspect Around Advice Cmoplete=================");
+        return returnVal;
+    }
+
+    @Async
+    //@Before("execution(* com.example.postgres.controller..*(..))")
+    @After("@within(mytest.sharedaspect.annotation.ServiceTrackerAnnotation)")
+    public void logMethod2(JoinPoint jp) throws InterruptedException {
+        System.out.println("=============LoggingAspect After Advice=================");
     }
 
     @EventListener

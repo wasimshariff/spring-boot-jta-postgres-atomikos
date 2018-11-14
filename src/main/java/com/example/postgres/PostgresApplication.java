@@ -27,9 +27,9 @@ import javax.transaction.UserTransaction;
 @EnableAspectJAutoProxy
 @EnableAsync
 @PropertySource("classpath:app-application.properties")
-@Import({AspectDemoApplication.class}) //this works ( but u need to provide @Bean for aspect in AspectDemoApplication config)
+//@Import({AspectDemoApplication.class}) //this works ( but u need to provide @Bean for aspect in AspectDemoApplication config)
 //  or ComponentScan also works ( this doesnt need @Bean annotation)
-//@ComponentScan({"com.example.postgres","mytest.sharedaspect"})
+@ComponentScan({"com.example.postgres","mytest.sharedaspect"})
 //@EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
 public class PostgresApplication {
 
